@@ -1,1 +1,2 @@
 # SupervisedNNTrainer
+This library provides methods for training supervised neural network models without the need to implement all the necessary steps (eg. input handling, reformatting, batching, evaluation, feedback, etc.). 
