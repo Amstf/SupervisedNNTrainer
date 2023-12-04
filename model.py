@@ -17,7 +17,7 @@ class Model(object):
         try:
             self.configure()
         except Exception:
-            print '\n', self, '\n'
+            print ('\n', self, '\n')
             raise
         
     def configure(self):
