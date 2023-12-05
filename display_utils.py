@@ -55,15 +55,4 @@ class DynamicConsoleTable(object):
             self.update()
         self.updated = False
         print ('\n' + (self.divider if not heavy else self.heavy_divider))
-    
-    def update(self, *args):
-        self.updated = True
-        args = list(args)
-        while len(args) < len(self.layout):
-            args.append('')
-        row = '|'
-        for i in range(len(self.layout)):
-            formatted = self._format_arg(args[i], self.layout[i])
-            row += ' ' + formatted + ' |'
-        sys.stdout.write('\r' + row)
-        sys.stdout.flush()
+
