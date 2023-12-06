@@ -261,7 +261,10 @@ class SupervisedTrainer(object):
                             heavy = True
                         table.finalize(heavy=heavy)
 
-
+                    # Termination condition
+                    if sustained_loss < loss_threshold:
+                        done = True
+                        break
 
                     self.update_output(iteration, loss_values, sustained_loss_values,
                                        validation_accuracy_values, max_accuracy_values)
