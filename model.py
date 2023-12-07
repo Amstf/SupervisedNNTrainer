@@ -249,16 +249,7 @@ class Conv1DComponent(Component):
                              stddev=np.sqrt(2./(self.filter_width*in_channels*self.num_kernels))))
         self.biases = tf.Variable(tf.zeros(self.num_kernels))
         
-    # Calculate output as a function of stride and padding type
-    def infer_output_shape(self, input_shape):
-        assert len(input_shape) >= 1 and len(input_shape) <= 2, \
-            'input_shape of ' + type(self).__name__ + ' must be 1D or 2D (channel dimension)'
-        if self.padding == 'SAME':
-            return [int(math.ceil(input_shape[0] / float(self.stride)))] + \
-                ([self.num_kernels] if self.num_kernels > 1 else [])
-        else:
-            return [int(math.ceil((input_shape[0] - self.filter_width + 1)/float(self.stride)))] + \
-                ([self.num_kernels] if self.num_kernels > 1 else [])
+
         
     def apply(self, x):
         includes_channel_dimension = len(self.input_shape) == 2
